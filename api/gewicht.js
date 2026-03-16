@@ -1,20 +1,10 @@
 export default function handler(req, res) {
-  const { who } = req.query;
-  const user = who || "Jemand";
-
-  // Würfelt ein Gewicht zwischen 50 und 150 kg
+  // Wir würfeln nur das Gewicht und den Spruch aus
   const gewicht = Math.floor(Math.random() * 101) + 50;
   
-  // Verschiedene lustige Zusätze
-  const sprüche = [
-    "Respekt!",
-    "Da geht noch was!",
-    "Stabil!",
-    "Oha!",
-    "Zeit für Gym?",
-    "Vollschlank!"
-  ];
+  const sprüche = ["Fettsack Junge!", "OHA LAN!", "Dünner Kelb!", "Zeit für Gym?", "Magersucht oder so?!", "Was ein Schrank!"];
   const spruch = sprüche[Math.floor(Math.random() * sprüche.length)];
 
-  res.status(200).send(`${user} wiegt stolze ${gewicht} kg. ${spruch}`);
+  // Wir senden NUR das Gewicht und den Spruch zurück (ohne Namen)
+  res.status(200).send(`${gewicht} kg. ${spruch}`);
 }
